@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Funin Exchange</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e79608;
+      margin: 0;
+      text-align: center;
+    }
+
+    .top-image {
+      background: rgb(231, 140, 4);
+      padding: 10px;
+    }
+
+    .top-image img {
+      width: 200px;
+      height: auto;
+    }
+
+    .container {
+      max-width: 350px;
+      background: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #000;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 94%;
+      padding: 12px;
+      background-color: #000;
+      color: #fcb900;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: #000;
+      text-decoration: none;
+      margin: 0 4px;
+    }
+
+    /* Toast Style */
+    .toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #28a745;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 12px;
+      position: fixed;
+      z-index: 9999;
+      right: 20px;
+      top: 20px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.5s, top 0.5s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+      top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-image">
+    <p><b><u>10xBetInEXCHANGE</u></b></p>
+    <img src="C:\Users\HP\Downloads\th (6).jpeg" alt="Banner">
+  </div>
+
+  <div class="container">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email Address" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <div class="message" id="loginMessage"></div>
+    <p>Don't have an account? <a href="register1.html">Register here</a></p>
+  </div>
+
+  <div class="footer-links">
+    <a href="login.html">Privacy Policy</a> |
+    <a href="login.html">Terms</a> |
+    <a href="login.htmls">KYC</a>
+  </div>
+
+  <!-- Toast Message -->
+  <div id="toast" class="toast">Login successful!</div>
+
+ <script>
+  function showToast(message, success = true) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.style.backgroundColor = success ? "#28a745" : "#dc3545"; // green or red
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  function validatePassword(password) {
+    return password.length >= 6;
+  }
+
+  function login() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const message = document.getElementById("loginMessage");
+
+    if (!email || !password) {
+      message.innerText = "All fields are required.";
+      showToast("All fields must be filled", false);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      message.innerText = "Please enter a valid email.";
+      showToast("Invalid email format", false);
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      message.innerText = "Password must be at least 6 characters.";
+      showToast("Weak password", false);
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+      message.innerText = "";
+      showToast("Login successful!", true);
+      setTimeout(() => {
+        alert("Welcome " + user.name);
+        // Optionally redirect: window.location.href = "dashboard.html";
+      }, 1000);
+    } else {
+      message.innerText = "Invalid email or password.";
+      showToast("Invalid Email or password", false);
+    }
+  }
+</script>
+
+
+</body>
+</html>

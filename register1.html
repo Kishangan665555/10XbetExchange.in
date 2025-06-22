@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Funin Exchange</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fcb900;
+      margin: 0;
+      text-align: center;
+    }
+
+    .top-image {
+      background: black;
+      padding: 10px;
+    }
+
+    .top-image img {
+      width: 200px;
+      height: auto;
+    }
+
+    .container {
+      max-width: 350px;
+      background: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #000;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 94%;
+      padding: 12px;
+      background-color: #000;
+      color: #fcb900;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: #000;
+      text-decoration: none;
+      margin: 0 4px;
+    }
+
+    /* Toast Styling */
+    .toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #28a745;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 12px;
+      position: fixed;
+      z-index: 9999;
+      right: 20px;
+      top: 20px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.5s, top 0.5s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .toast.error {
+      background-color: #dc3545;
+    }
+
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+      top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-image">
+    <img src="C:\Users\HP\Downloads\th (6).jpeg" alt="Banner">
+  </div>
+
+  <div class="container">
+    <h2>Register</h2>
+    <input type="text" id="regName" placeholder="Full Name" required />
+    <input type="email" id="regEmail" placeholder="Email Address" required />
+    <input type="password" id="regPassword" placeholder="Password" required />
+    <input type="tel" id="regPhone" placeholder="Phone Number" required />
+    <button onclick="register()">Sign Up</button>
+    <div class="message" id="regMessage"></div>
+    <p>Already have an account? <a href="tou.html">Login here</a></p>
+  </div>
+
+  <div class="footer-links">
+    <a href="login.html">Privacy Policy</a> |
+    <a href="login.html">Terms</a> |
+    <a href="login.html">KYC</a>
+  </div>
+
+  <!-- Toast Element -->
+  <div id="toast" class="toast">Toast message</div>
+
+ <script>
+  function showToast(msg, isSuccess = true) {
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.className = "toast show";
+    if (!isSuccess) {
+      toast.classList.add("error");
+    }
+    setTimeout(() => {
+      toast.className = "toast";
+    }, 3000);
+  }
+
+  function validatePassword(password) {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    return regex.test(password);
+  }
+
+  function validatePhone(phone) {
+    const regex = /^[0-9]{10,15}$/;
+    return regex.test(phone);
+  }
+
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  function register() {
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value;
+    const phone = document.getElementById("regPhone").value.trim();
+    const message = document.getElementById("regMessage");
+
+    if (!name || !email || !password || !phone) {
+      message.innerText = "All fields are required.";
+      showToast("Please fill all fields", false);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      message.innerText = "Invalid email address format.";
+      showToast("Invalid email address", false);
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      message.innerText = "Password must be at least 6 characters and include a number.";
+      showToast("Weak password", false);
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      message.innerText = "Phone number must be numeric and 10-15 digits long.";
+      showToast("Invalid phone number", false);
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    if (users.find(u => u.email === email)) {
+      message.innerText = "Email already registered.";
+      showToast("Email already exists", false);
+      return;
+    }
+
+    users.push({ name, email, password, phone });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    message.classList.add("success");
+    message.innerText = "Registration successful! Redirecting to login...";
+    showToast("Registered Successfully!", true);
+
+    setTimeout(() => {
+      window.location.href = "tou.html";
+    }, 1500);
+  }
+</script>
+
+
+</body>
+</html>

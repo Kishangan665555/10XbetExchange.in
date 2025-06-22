@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>10xbetInExchange </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    /* Header */
+    .topbar {
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 18px;
+      color: orange;
+    }
+
+    .topbar-buttons button {
+      padding: 8px 14px;
+      margin-left: 8px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup {
+      background: yellow;
+      color: #000;
+    }
+
+    .login {
+      background: red;
+      color: white;
+    }
+
+    /* News Ticker */
+    .news-bar {
+      display: flex;
+      align-items: center;
+      background: #003366;
+      color: white;
+      font-size: 14px;
+      padding: 15px;
+      justify-content: space-between;
+    }
+
+    .date {
+      background: #00aaff;
+      padding: 2px 8px;
+      margin-left: 5px;
+      border-radius: 4px;
+    }
+
+    /* Banner */
+    .banner {
+      background: linear-gradient(#111, #222);
+      padding: 60px;
+      color: white;
+      text-align: center;
+    }
+
+    /* Game Grid */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 4px;
+    }
+
+    .game-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 5px rgba(201, 5, 5, 0.3);
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 85%;
+      object-fit:fill;
+    }
+
+    .game-card .label {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .play-now {
+      background: orange;
+      color: #000;
+      padding: 7px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav1 {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #002244;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      color: white;
+    }
+
+    .bottom-nav1 div {
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .bottom-nav1 .active {
+      color: yellow;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .game-card img {
+        height: 100px;
+      }
+    }
+    .top-icons { 
+      background-color: #3d3e3e;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .top-icons img {
+      max-height: 70px;
+    }
+
+    h2 {
+      margin: 10px 0;
+    }
+
+    .features {
+      background-color: #3d3e3e;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .feature {
+      display: flex;
+      background-color: #3d3e3e;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feature img {
+      height: 70px;
+      margin-bottom: 10px;
+    }
+
+    .links {
+      background-color: #3d3e3e;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+
+    .social-icons {
+      background-color: #3d3e3e;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .social-icons img {
+      background-color: #3d3e3e;
+      height: 30px;
+    }
+
+    .description {
+      background-color: #3d3e3e;
+      padding: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ccc;
+      text-align: justify;
+    }
+
+    .bottom-nav {
+      background-color: #3d3e3e;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #13202c;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 2px solid #000;
+    }
+
+    .bottom-nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bottom-nav a.active {
+      color: gold;
+    }
+  </style>
+</head>
+<body >
+
+  <div class="topbar">
+    <div class="logo"><img src="C:\Users\HP\Downloads\th (6).jpeg" width="70" height="40"> 10xBetInEXCHANGE</div>
+    <div class="topbar-buttons">
+      <button class="signup"><a href="register1.html"><img src="C:\Users\HP\Downloads\illustration-of-lock-icon-vector.jpg"width="30" height="35">SIGN UP</button></a>
+      <button class="login"><a href="tou.html"><img src="C:\Users\HP\Downloads\th (8).jpeg" width="30" height="35">LOGIN</button></a>
+    </div>
+  </div>
+
+  <div class="news-bar">
+    <div>📰 News</div>
+    <div><span class="date">18 May 2025</span> Website of 10xbetinexchange.com is now live</div>
+  </div>
+
+  <div class="banner">
+    <h3>WINMATCH</h3>
+    <h2>🎲 ULTIMATE TRIO</h2>
+    <p>Roulette, Teen Patti, Andar Bahar!</p>
+    <img src="C:\Users\HP\Downloads\images (1).jpeg" width="500" height="200">
+  </div>
+
+  <div class="game-grid">
+    <div class="game-card">
+      <img src="C:\Users\HP\Downloads\th (3).jpeg"alt="Live Sports">
+      <div class="label">Live Sports <span class="play-now">Play Now</span></div>
+    </div>
+
+    <div class="game-card">
+      <img src="C:\Users\HP\Downloads\game-1.jpeg" alt="Teen Patti">
+      <div class="label">Teen Patti <span class="play-now">Play Now</span></div>
+    </div>
+
+    <div class="game-card">
+      <img src="C:\Users\HP\Downloads\images.jpeg"  alt="Andhar Bahar">
+      <div class="label">Andhar Bahar <span class="play-now">Play Now</span></div>
+    </div>
+
+    <div class="game-card">
+      <img src="C:\Users\HP\Downloads\3.webp" alt="Roulette">
+      <div class="label">Roulette <span class="play-now">Play Now</span></div>
+    </div>
+
+    <div class="game-card">
+      <img src="C:\Users\HP\Downloads\th (4).jpeg" alt="Cricket">
+      <div class="label">Cricket <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\Users\HP\Downloads\WhatsApp Image 2025-06-19 at 08.21.15_a52117e4.jpg" alt="Live Casino">
+      <div class="label">Live-Casino <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.17.01_5a8fc764 3.jpg" alt="Sportsbook">
+      <div class="label">Sportsbook <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\Users\HP\OneDrive\Videos\Pictures\WhatsApp Image 2025-06-19 at 08.17.01_5a8fc764.jpg"alt="Sports-Inplay">
+      <div class="label">Sports-Inplay <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.17.01_5a8fc764.jpg" alt="Ezuki">
+      <div class="label">Ezuki <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\Users\HP\OneDrive\Videos\Pictures\WhatsApp Image 2025-06-19 at 08.39.27_ad122744.jpg" alt="XPG">
+      <div class="label">XPG<span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\Users\HP\OneDrive\Videos\Pictures\WhatsApp Image 2025-06-19 at 08.39.27_ad1227442.jpg" alt="Evolution">
+      <div class="label">Evolution<span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\Users\HP\OneDrive\Videos\Pictures\WhatsApp Image 2025-06-19 at 08.39.27_ad1227443.jpg" alt="Slots">
+      <div class="label">Slots <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\Users\HP\OneDrive\Videos\Pictures\WhatsApp Image 2025-06-19 at 08.39.27_c972d11c.jpg" alt="TVBET">
+      <div class="label">TVBET<span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.27_c972d11c.jpg" alt="BetGames">
+      <div class="label">BetGames <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 33.jpg"alt="PLaytech">
+      <div class="label">Playtech <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.27_c972d11c76.jpg" alt="Jackpot">
+      <div class="label">Jackpot<span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.27_c972d11c23.jpg"alt="7Mojos">
+      <div class="label">7Mojos <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.27_c972d11c654.jpg" alt="Live88">
+      <div class="label">Live88 <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.29_f032d3e6.jpg"alt="Ultimate AB">
+      <div class="label">Ultimate AB<span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.29_f032d3e63.jpg" alt="Spribe">
+      <div class="label">Spribe <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.29_f032d3e643.jpg"alt="ICONIC21">
+      <div class="label">ICONIC21<span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.29_f032d3e621.jpg" alt="1 Day Teenpatti">
+      <div class="label"> 1 Day Teenpatti</div> <span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.29_f032d3e6554.jpg" alt="Ez Arcade">
+      <div class="label">Ez Arcade</div><span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.29_f032d3e6534.jpg" alt="Aviotrix">
+      <div class="label">Aviotrix</div><span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.29_f032d3e634.jpg" alt="MAtka">
+      <div class="label">MAtka</div><span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.32_6c043d3b.jpg"alt="Winmatch Studio">
+      <div class="label">Winmatch Studio</div><span class="play-now">Play Now</span></div>
+    </div>
+    <div class="game-card">
+      <img src="C:\WhatsApp Image 2025-06-19 at 08.39.32_6c043d3b767.jpg" alt="Horse Racing">
+      <div class="label">Horse Racing</div><span class="play-now">Play Now</span></div>
+    </div>
+    
+
+  </div>
+   <div class="top-icons">
+    <img src="C:\Users\HP\Downloads\th (6).jpeg" alt="10xBeyIn "><p> 10xBetInExchange Logo</p>
+    <img src="C:\Users\HP\Downloads\th (9).jpeg" alt="100% Legal">
+    <img src="C:\Users\HP\Downloads\th (10).jpeg" alt="Support">
+  </div>
+
+  <h2><center>Join Now</center></h2>
+
+  <!-- Features -->
+  <div class="features">
+    <div class="feature">
+      <img src="C:\Users\HP\Downloads\th (11).jpeg"alt="Withdrawals">
+      <p>Instant Withdrawals<br>& Deposits</p>
+    </div>
+    <div class="feature">
+      <img src="C:\Users\HP\Downloads\th (12).jpeg" alt="24/7">
+      <p>24/7 Customer<br>Service</p>
+    </div>
+    <div class="feature">
+      <img src="C:\Users\HP\Downloads\th (13).jpeg" alt="Transfer">
+      <p>Player to Player<br>Transfer</p>
+    </div>
+    <div class="feature">
+      <img src="C:\Users\HP\Downloads\live-streaming-icon-for-the-broadcast-system-live-streaming-icon-design-with-red-and-white-colors-live-streaming-image-with-text-effect-red-and-white-gradient-colors-free-png.webp" alt="Stream">
+      <p>Live Stream of<br>Events</p>
+    </div>
+    <div class="feature">
+      <img src="C:\Users\HP\Downloads\otsobet-first-deposit-for-300-bonus-logo-otsobet1.jpg" alt="Bonus">
+      <p>300 Rupees<br>Referral Bonus</p>
+    </div>
+  </div>
+
+  <!-- Links -->
+  <div class="links">
+    <span>Privacy Policy</span>
+    <span>Rules and Regulations</span>
+    <span>KYC</span>
+    <span>FAQ</span>
+    <span>Responsible Gaming</span>
+    <span>Terms and Conditions</span>
+    <span>About Us</span>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="social-icons">
+    <a href="https://www.facebook.com/BetinexchangeOfficial" alt="facebook">
+    <img src="C:\Users\HP\Downloads\th (14).jpeg" alt="Facebook">
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=918369207685">
+    <img src="C:\Users\HP\Downloads\th (15).jpeg" alt="WhatsApp">
+    </a>
+    <a href="https://t.me/betinexch"></a>
+    <img src="C:\Users\HP\Downloads\th (16).jpeg" alt="Telegram">
+  </a>
+  <a href="https://x.com/BetinexchangeI">
+    <img src="C:\Users\HP\Downloads\th (17).jpeg"alt="Twitter">
+    </a>
+    <a href="https://www.instagram.com/">
+    <img src="C:\Users\HP\Downloads\th (18).jpeg" alt="Instagram">
+    </a>
+    <a href="https://www.youtube.com/@BetinExch">
+    <img src="C:\Users\HP\Downloads\th (19).jpeg" alt="YouTube">
+    </a>
+  </div>
+
+  <!-- Description -->
+  <div class="description">
+    10xBetInEXCHANGE the world's leading online sports betting and casino gaming platform that aims at offering an authentic, immersive and seamless gaming experience to its players. There are more than 30 sports to choose from in total for EXCHANGE, which include cricket (IPL, CPL, PSL, World Cup), soccer, tennis and many more. Players can play LIVE CASINO on Funinexchange247 with LIVE DEALERS dealing all games including Roulette, Blackjack, Teen Patti, Andar Bahar, Poker, Slots and more. Funinexchange247 is a trusted casino and offers fast deposits and withdrawals with round the clock support on email and live chat. All new players at Funinexchange247 are offered a generous welcome bonus on their first deposit! Welcome to the The King of Online Betting & Casino, Funinexchange247!
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="#"><img src="exch-icon.png" alt="" style="height:24px;"><span>Exch</span></a>
+    <a href="#"><img src="sports-icon.png" alt="" style="height:24px;"><span>Sports</span></a>
+    <a href="#" class="active"><img src="home-icon.png" alt="" style="height:24px;"><span>Home</span></a>
+    <a href="#"><img src="inplay-icon.png" alt="" style="height:24px;"><span>In-Play</span></a>
+    <a href="#"><img src="account-icon.png" alt="" style="height:24px;"><span>Account</span></a>
+  </div>
+
+
+  <div class="bottom-nav1">
+    <div>Exch</div>
+    <div>Sports</div>
+    <div class="active">Home</div>
+    <div>In-Play</div>
+    <div>Account</div>
+  </div>
+
+</body>
+</html>
